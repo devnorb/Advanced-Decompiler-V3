@@ -655,7 +655,7 @@ local function Decompile(bytecode)
 						lineStr ..= `[line {instructionLargeLine + instructionLine}] `
 					end
 
-					protoOutput ..= lineStr .. tostring(insnIndex) .. "."
+					-- protoOutput ..= lineStr .. tostring(insnIndex) .. "."
 
 					addTab(1)
 
