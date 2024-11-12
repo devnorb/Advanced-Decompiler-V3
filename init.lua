@@ -41,8 +41,15 @@ local function LoadFromUrl(x)
 end
 local Implementations = LoadFromUrl("Implementations")
 local Reader = LoadFromUrl("Reader")
-local Strings = LoadFromUrl("Strings")
 local Luau = LoadFromUrl("Luau")
+
+local Strings = {
+	SUCCESS = "--Decompiled with the \n",
+	TIMEOUT = "-- Decompiler failed to decompile: Timeout exceeded",
+	COMPILATION_FAILURE = "-- Decompiler failed to decompile: Failed to compile script",
+	UNSUPPORTED_LBC_VERSION = "-- Decompiler failed to decompile: invalid bytecode provided.",
+	USED_GLOBALS = "-- Script Globals: %s.\n",
+}
 
 local LuauOpCode = Luau.OpCode
 local LuauBytecodeTag = Luau.BytecodeTag
@@ -655,7 +662,7 @@ local function Decompile(bytecode)
 						lineStr ..= `[line {instructionLargeLine + instructionLine}] `
 					end
 
-					-- protoOutput ..= lineStr .. tostring(insnIndex) .. "."
+					protoOutput ..= lineStr .. tostring(insnIndex) .. "."
 
 					addTab(1)
 
