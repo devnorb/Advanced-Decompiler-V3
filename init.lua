@@ -1934,7 +1934,6 @@ _ENV.decompile = function(script, x, ...)
 	end
 
 	local output, elapsedTime = Decompile(result, options)
-
 	if options.ReturnElapsedTime then
 		return output, elapsedTime
 	else
